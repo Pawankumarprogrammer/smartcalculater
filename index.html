@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SmartCalc - Interactive Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">🧮 <span>Smart Calculater</span></div>
+    <button id="themeBtn" class="icon-btn" title="Toggle theme">🌙</button>
+  </header>
+
+  <main class="app">
+    <aside class="sidebar">
+      <h2>Feture</h2>
+      <button class="nav-btn active" data-target="basic">🧮 Simple Calculation</button>
+      <button class="nav-btn" data-target="currency">💱 Currency Calculator</button>
+      <button class="nav-btn" data-target="simpleInterest">📈 Simple Interest</button>
+      <button class="nav-btn" data-target="compoundInterest">💰 Compound Interest</button>
+      <button class="nav-btn" data-target="age">🎂 Age Calculator</button>
+    </aside>
+
+    <section class="content">
+      <!-- Basic -->
+      <section id="basic" class="panel active-panel">
+        <div class="panel-head">
+          <div>
+            <h1>Simple Calculator</h1>
+            <p>Perform quick arithmetic calculations.</p>
+          </div>
+        </div>
+        <div class="calculator">
+          <input id="display" class="display" type="text" value="0" readonly>
+          <div class="keys">
+            <button class="key danger" data-action="clear">AC</button>
+            <button class="key" data-action="backspace">⌫</button>
+            <button class="key operator" data-value="%">%</button>
+            <button class="key operator" data-value="/">÷</button>
+
+            <button class="key" data-value="7">7</button>
+            <button class="key" data-value="8">8</button>
+            <button class="key" data-value="9">9</button>
+            <button class="key operator" data-value="*">×</button>
+
+            <button class="key" data-value="4">4</button>
+            <button class="key" data-value="5">5</button>
+            <button class="key" data-value="6">6</button>
+            <button class="key operator" data-value="-">−</button>
+
+            <button class="key" data-value="1">1</button>
+            <button class="key" data-value="2">2</button>
+            <button class="key" data-value="3">3</button>
+            <button class="key operator" data-value="+">+</button>
+
+            <button class="key zero" data-value="0">0</button>
+            <button class="key" data-value=".">.</button>
+            <button class="key equal" data-action="equals">=</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Currency -->
+      <section id="currency" class="panel">
+        <div class="panel-head">
+          <div>
+            <h1>Currency Calculator</h1>
+            <p>Convert between common currencies using live rates when available.</p>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="field">
+            <label>Amount</label>
+            <input id="currencyAmount" type="number" min="0" step="any" value="1">
+          </div>
+          <div class="two-col">
+            <div class="field">
+              <label>From</label>
+              <select id="fromCurrency">
+                <option value="USD">🇺🇸 USD - US Dollar</option>
+                <option value="INR" selected>🇮🇳 INR - Indian Rupee</option>
+                <option value="EUR">🇪🇺 EUR - Euro</option>
+                <option value="GBP">🇬🇧 GBP - British Pound</option>
+                <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+              </select>
+            </div>
+            <button id="swapCurrency" class="swap">⇄</button>
+            <div class="field">
+              <label>To</label>
+              <select id="toCurrency">
+                <option value="USD" selected>🇺🇸 USD - US Dollar</option>
+                <option value="INR">🇮🇳 INR - Indian Rupee</option>
+                <option value="EUR">🇪🇺 EUR - Euro</option>
+                <option value="GBP">🇬🇧 GBP - British Pound</option>
+                <option value="JPY">🇯🇵 JPY - Japanese Yen</option>
+                <option value="AUD">🇦🇺 AUD - Australian Dollar</option>
+                <option value="CAD">🇨🇦 CAD - Canadian Dollar</option>
+              </select>
+            </div>
+          </div>
+          <button id="convertBtn" class="primary">Convert Currency</button>
+          <div id="currencyResult" class="result">Enter an amount and press Convert.</div>
+          <small class="note">Rates are fetched from a public exchange-rate service when your browser has internet access.</small>
+        </div>
+      </section>
+
+      <!-- Simple Interest -->
+      <section id="simpleInterest" class="panel">
+        <div class="panel-head">
+          <div>
+            <h1>Simple Interest Calculator</h1>
+            <p>Formula: SI = (P × R × T) / 100</p>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="two-col">
+            <div class="field"><label>Principal (P)</label><input id="siPrincipal" type="number" min="0" value="10000"></div>
+            <div class="field"><label>Rate (% per year)</label><input id="siRate" type="number" min="0" step="any" value="5"></div>
+          </div>
+          <div class="field"><label>Time (years)</label><input id="siTime" type="number" min="0" step="any" value="2"></div>
+          <button id="siBtn" class="primary">Calculate Interest</button>
+          <div id="siResult" class="result"></div>
+        </div>
+      </section>
+
+      <!-- Compound Interest -->
+      <section id="compoundInterest" class="panel">
+        <div class="panel-head">
+          <div>
+            <h1>Compound Interest Calculator</h1>
+            <p>Formula: A = P(1 + R/n)^(n×T)</p>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="two-col">
+            <div class="field"><label>Principal (P)</label><input id="ciPrincipal" type="number" min="0" value="10000"></div>
+            <div class="field"><label>Rate (% per year)</label><input id="ciRate" type="number" min="0" step="any" value="5"></div>
+          </div>
+          <div class="two-col">
+            <div class="field"><label>Time (years)</label><input id="ciTime" type="number" min="0" step="any" value="2"></div>
+            <div class="field">
+              <label>Compounding</label>
+              <select id="ciFrequency">
+                <option value="1">Yearly</option>
+                <option value="2">Half-yearly</option>
+                <option value="4">Quarterly</option>
+                <option value="12" selected>Monthly</option>
+                <option value="365">Daily</option>
+              </select>
+            </div>
+          </div>
+          <button id="ciBtn" class="primary">Calculate Compound Interest</button>
+          <div id="ciResult" class="result"></div>
+        </div>
+      </section>
+
+      <!-- Age -->
+      <section id="age" class="panel">
+        <div class="panel-head">
+          <div>
+            <h1>Age Calculator</h1>
+            <p>Find your exact age in years, months and days.</p>
+          </div>
+        </div>
+        <div class="form-card">
+          <div class="two-col">
+            <div class="field"><label>Date of Birth</label><input id="dob" type="date"></div>
+            <div class="field"><label>Calculate As Of</label><input id="ageAsOf" type="date"></div>
+          </div>
+          <button id="ageBtn" class="primary">Calculate Age</button>
+          <div id="ageResult" class="result"></div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <footer>SmartCalc • Interactive multi-purpose calculator</footer>
+  <script src="script.js"></script>
+</body>
+</html>

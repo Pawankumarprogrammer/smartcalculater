@@ -1,0 +1,194 @@
+*{
+    box-sizing:border-box
+}
+:root{
+    --bg:#f4f7fb;
+    --card:#fff;
+    --text:#182230;
+    --muted:#6b7280;
+    --primary:#4f46e5;
+    --border:#e5e7eb;
+    --soft:#eef2ff;
+    --danger:#fee2e2
+}
+body.dark{
+    --bg:#111827;
+    --card:#1f2937;
+    --text:#f9fafb;
+    --muted:#9ca3af;
+    --border:#374151;
+    --soft:#312e81;
+    --danger:#7f1d1d
+}
+body{
+    margin:0;
+    font-family:Inter,Segoe UI,Arial,sans-serif;
+    background:var(--bg);color:var(--text);
+    min-height:100vh
+}
+.topbar{
+    height:70px;
+    background:var(--card);
+    border-bottom:1px solid var(--border);
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    padding:0 28px;
+    position:sticky;
+    top:0;
+    z-index:5
+}
+.brand{
+    font-size:23px;
+    font-weight:800
+}
+.brand span{
+    margin-left:8px
+}
+.icon-btn{
+    border:1px solid var(--border);
+    background:var(--card);
+    color:var(--text);
+    border-radius:10px;
+    padding:10px 13px;
+    font-size:18px;
+    cursor:pointer
+}
+.app{
+    display:flex;
+    max-width:1250px;
+    margin:28px auto;
+    padding:0 20px;
+    gap:25px
+}
+.sidebar{
+    width:270px;
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:18px;
+    height:max-content;
+    position:sticky;
+    top:95px
+}
+.sidebar h2{
+    font-size:18px;
+    margin:6px 10px 16px
+}
+.nav-btn{
+    width:100%;
+    padding:13px 14px;
+    margin:5px 0;
+    border:0;
+    border-radius:11px;
+    background:transparent;
+    color:var(--text);
+    text-align:left;
+    font-size:14px;
+    cursor:pointer
+}
+.nav-btn:hover,.nav-btn.active{
+    background:var(--soft);
+    font-weight:700
+}
+.content{
+    flex:1;
+    min-width:0;
+    aling-item="center";
+}
+.panel{
+    display:none
+}
+.active-panel{display:block}
+.panel-head{
+    margin:5px 0 20px}
+.panel-head h1{margin:0 0 6px;font-size:29px}
+.panel-head p{margin:0;color:var(--muted)}
+.form-card,.calculator{
+    background:var(--card);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:25px;
+    box-shadow:0 10px 30px rgba(0,0,0,.04)
+}
+.field{margin-bottom:18px}
+.field label{
+    display:block;
+    font-size:13px;
+    font-weight:700;
+    margin-bottom:8px
+}
+input,select{
+    width:100%;
+    padding:13px;
+    border:1px solid var(--border);
+    border-radius:10px;
+    background:var(--card);
+    color:var(--text);
+    font-size:15px;
+    outline:none
+}
+input:focus,select:focus{border-color:var(--primary)}
+.two-col{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+    align-items:end
+}
+.primary{
+    width:100%;
+    border:0;
+    border-radius:11px;
+    padding:14px;
+    background:var(--primary);
+    color:white;
+    font-weight:800;
+    font-size:15px;
+    cursor:pointer
+}
+.primary:hover{opacity:.9}
+.result{
+    margin-top:18px;
+    background:var(--soft);
+    border-radius:12px;
+    padding:18px;
+    min-height:58px;
+    font-weight:700;
+    line-height:1.7
+}
+.note{display:block;color:var(--muted);margin-top:10px}
+.swap{
+    height:45px;
+    width:45px;
+    border:1px solid var(--border);
+    border-radius:50%;
+    background:var(--card);
+    color:var(--text);
+    font-size:20px;
+    cursor:pointer;
+    margin:0 auto 18px
+}
+.calculator{max-width:390px}
+.display{
+    font-size:30px;
+    text-align:right;
+    font-weight:700;
+    margin-bottom:15px;
+    padding:18px}
+.keys{display:grid;grid-template-columns:repeat(4,1fr);gap:10px}
+.key{
+    height:62px;
+    border:1px solid var(--border);
+    background:var(--bg);
+    color:var(--text);
+    border-radius:12px;
+    font-size:19px;
+    font-weight:700;
+    cursor:pointer}
+.key:hover{filter:brightness(.95)}
+.key.operator{background:var(--soft);color:var(--primary)}
+.key.danger{background:var(--danger)}
+.key.equal{background:var(--primary);color:white}
+.key.zero{grid-column:span 2}
+footer{text-align:center;color:var(--muted);padding:20px;font-size:13px}
+@media(max-width:800px){.app{flex-direction:column}.sidebar{width:100%;position:static}.nav-btn{width:auto;margin-right:5px;display:inline-block}.two-col{grid-template-columns:1fr}.swap{display:none}}
